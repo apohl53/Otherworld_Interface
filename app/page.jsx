@@ -6,6 +6,8 @@ export default function Home() {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [uploadedUrl, setUploadedUrl] = useState(null);
   const fileInputRef = useRef(null);
 
   const handleFileChange = (selectedFile) => {
@@ -22,6 +24,7 @@ export default function Home() {
     setFile(selectedFile);
     const url = URL.createObjectURL(selectedFile);
     setPreview(url);
+    setUploadedUrl(null);
   };
 
   const handleDrop = (e) => {
@@ -44,8 +47,43 @@ export default function Home() {
   const clearFile = () => {
     setFile(null);
     setPreview(null);
+    setUploadedUrl(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
+    }
+  };
+
+  const handleUpload = async () => {
+    if (!file) return;
+
+    setUploading(true);
+
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setUploadedUrl(window.location.origin + data.url);
+        alert(
+          `File uploaded successfully! Access it at: ${
+            window.location.origin + data.url
+          }`
+        );
+      } else {
+        alert("Upload failed: " + data.error);
+      }
+    } catch (error) {
+      console.error("Upload error:", error);
+      alert("Upload failed");
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -245,6 +283,36 @@ export default function Home() {
                 )}
               </div>
 
+              {uploadedUrl && (
+                <div
+                  style={{
+                    padding: "15px",
+                    backgroundColor: "#e8f5e9",
+                    borderRadius: "6px",
+                    marginBottom: "20px",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: "500",
+                      marginBottom: "5px",
+                    }}
+                  >
+                    File uploaded successfully!
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "12px",
+                      color: "#666",
+                      wordBreak: "break-all",
+                    }}
+                  >
+                    GET URL: {uploadedUrl}
+                  </p>
+                </div>
+              )}
+
               <div style={{ display: "flex", gap: "10px" }}>
                 <button
                   onClick={clearFile}
@@ -261,19 +329,25 @@ export default function Home() {
                   Upload Different File
                 </button>
                 <button
+                  onClick={handleUpload}
+                  disabled={uploading}
                   style={{
                     flex: "1",
                     padding: "12px",
                     border: "none",
-                    backgroundColor: "#0066cc",
+                    backgroundColor: uploading ? "#ccc" : "#0066cc",
                     color: "white",
                     borderRadius: "6px",
-                    cursor: "pointer",
+                    cursor: uploading ? "not-allowed" : "pointer",
                     fontSize: "14px",
                     fontWeight: "500",
                   }}
                 >
-                  Process File
+                  {uploading
+                    ? "Uploading..."
+                    : uploadedUrl
+                    ? "Uploaded ✓"
+                    : "Upload File"}
                 </button>
               </div>
             </div>
