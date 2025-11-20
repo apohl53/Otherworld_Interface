@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function Home() {
   const [file, setFile] = useState(null);
@@ -8,7 +8,22 @@ export default function Home() {
   const [isDragging, setIsDragging] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [uploadedUrl, setUploadedUrl] = useState(null);
+  const [uploadedFiles, setUploadedFiles] = useState([]);
   const fileInputRef = useRef(null);
+
+  const fetchUploadedFiles = async () => {
+    try {
+      const response = await fetch("/api/files");
+      const data = await response.json();
+      setUploadedFiles(data.files || []);
+    } catch (error) {
+      console.error("Error fetching files:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUploadedFiles();
+  }, []);
 
   const handleFileChange = (selectedFile) => {
     if (!selectedFile) return;
@@ -54,20 +69,29 @@ export default function Home() {
   };
 
   const handleUpload = async () => {
-    if (!file) return;
+    console.log("[v0] handleUpload called, file:", file);
+
+    if (!file) {
+      console.log("[v0] No file selected");
+      return;
+    }
 
     setUploading(true);
+    console.log("[v0] Starting upload...");
 
     try {
       const formData = new FormData();
       formData.append("file", file);
+      console.log("[v0] FormData created, sending request to /api/upload");
 
       const response = await fetch("/api/upload", {
         method: "POST",
         body: formData,
       });
 
+      console.log("[v0] Response received:", response.status);
       const data = await response.json();
+      console.log("[v0] Response data:", data);
 
       if (data.success) {
         setUploadedUrl(window.location.origin + data.url);
@@ -76,30 +100,24 @@ export default function Home() {
             window.location.origin + data.url
           }`
         );
+        fetchUploadedFiles();
       } else {
         alert("Upload failed: " + data.error);
       }
     } catch (error) {
-      console.error("Upload error:", error);
-      alert("Upload failed");
+      console.error("[v0] Upload error:", error);
+      alert("Upload failed: " + error.message);
     } finally {
       setUploading(false);
+      console.log("[v0] Upload complete");
     }
   };
 
   const isVideo = file?.type.startsWith("video/");
 
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "20px",
-      }}
-    >
-      <div style={{ width: "100%", maxWidth: "800px" }}>
+    <main style={{ minHeight: "100vh", padding: "20px" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
           <h1
             style={{
@@ -115,243 +133,354 @@ export default function Home() {
           </p>
         </div>
 
-        <div
-          style={{
-            border: "1px solid #ddd",
-            borderRadius: "8px",
-            padding: "40px",
-            backgroundColor: "white",
-          }}
-        >
-          {!file ? (
+        <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+          <div style={{ flex: "1", minWidth: "300px" }}>
             <div
-              onDrop={handleDrop}
-              onDragOver={handleDragOver}
-              onDragLeave={handleDragLeave}
               style={{
-                border: isDragging ? "2px dashed #0066cc" : "2px dashed #ccc",
+                border: "1px solid #ddd",
                 borderRadius: "8px",
-                padding: "60px 20px",
-                textAlign: "center",
-                backgroundColor: isDragging ? "#f0f8ff" : "transparent",
-                transition: "all 0.2s",
+                padding: "40px",
+                backgroundColor: "white",
               }}
             >
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*,video/*"
-                onChange={(e) => handleFileChange(e.target.files?.[0] || null)}
-                style={{ display: "none" }}
-                id="file-upload"
-              />
-
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: "20px",
-                }}
-              >
+              {!file ? (
                 <div
+                  onDrop={handleDrop}
+                  onDragOver={handleDragOver}
+                  onDragLeave={handleDragLeave}
                   style={{
-                    width: "60px",
-                    height: "60px",
-                    borderRadius: "50%",
-                    backgroundColor: "#e6f2ff",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    border: isDragging
+                      ? "2px dashed #0066cc"
+                      : "2px dashed #ccc",
+                    borderRadius: "8px",
+                    padding: "60px 20px",
+                    textAlign: "center",
+                    backgroundColor: isDragging ? "#f0f8ff" : "transparent",
+                    transition: "all 0.2s",
                   }}
                 >
-                  <span style={{ fontSize: "24px" }}>📤</span>
-                </div>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*,video/*"
+                    onChange={(e) =>
+                      handleFileChange(e.target.files?.[0] || null)
+                    }
+                    style={{ display: "none" }}
+                    id="file-upload"
+                  />
 
-                <div>
-                  <p style={{ fontSize: "16px", marginBottom: "5px" }}>
-                    Drop your file here, or{" "}
-                    <label
-                      htmlFor="file-upload"
-                      style={{
-                        color: "#0066cc",
-                        cursor: "pointer",
-                        textDecoration: "underline",
-                      }}
-                    >
-                      browse
-                    </label>
-                  </p>
-                  <p style={{ fontSize: "14px", color: "#666" }}>
-                    Supports: Images (PNG, JPG, GIF) and Videos (MP4, MOV, AVI)
-                  </p>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  justifyContent: "space-between",
-                  gap: "15px",
-                  padding: "15px",
-                  backgroundColor: "#f5f5f5",
-                  borderRadius: "8px",
-                  marginBottom: "20px",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: "10px",
-                    flex: "1",
-                    minWidth: "0",
-                  }}
-                >
                   <div
                     style={{
-                      padding: "8px",
-                      backgroundColor: "white",
-                      borderRadius: "6px",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: "20px",
                     }}
                   >
-                    <span style={{ fontSize: "20px" }}>
-                      {isVideo ? "🎥" : "🖼️"}
-                    </span>
-                  </div>
-                  <div style={{ flex: "1", minWidth: "0" }}>
-                    <p
+                    <div
                       style={{
-                        fontWeight: "500",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
+                        width: "60px",
+                        height: "60px",
+                        borderRadius: "50%",
+                        backgroundColor: "#e6f2ff",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                       }}
                     >
-                      {file.name}
-                    </p>
-                    <p style={{ fontSize: "14px", color: "#666" }}>
-                      {(file.size / 1024 / 1024).toFixed(2)} MB
-                    </p>
+                      <span style={{ fontSize: "24px" }}>📤</span>
+                    </div>
+
+                    <div>
+                      <p style={{ fontSize: "16px", marginBottom: "5px" }}>
+                        Drop your file here, or{" "}
+                        <label
+                          htmlFor="file-upload"
+                          style={{
+                            color: "#0066cc",
+                            cursor: "pointer",
+                            textDecoration: "underline",
+                          }}
+                        >
+                          browse
+                        </label>
+                      </p>
+                      <p style={{ fontSize: "14px", color: "#666" }}>
+                        Supports: Images (PNG, JPG, GIF) and Videos (MP4, MOV,
+                        AVI)
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <button
-                  onClick={clearFile}
-                  style={{
-                    padding: "8px",
-                    border: "none",
-                    background: "transparent",
-                    cursor: "pointer",
-                    fontSize: "18px",
-                  }}
-                >
-                  ✕
-                </button>
-              </div>
+              ) : (
+                <div>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "flex-start",
+                      justifyContent: "space-between",
+                      gap: "15px",
+                      padding: "15px",
+                      backgroundColor: "#f5f5f5",
+                      borderRadius: "8px",
+                      marginBottom: "20px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: "10px",
+                        flex: "1",
+                        minWidth: "0",
+                      }}
+                    >
+                      <div
+                        style={{
+                          padding: "8px",
+                          backgroundColor: "white",
+                          borderRadius: "6px",
+                        }}
+                      >
+                        <span style={{ fontSize: "20px" }}>
+                          {isVideo ? "🎥" : "🖼️"}
+                        </span>
+                      </div>
+                      <div style={{ flex: "1", minWidth: "0" }}>
+                        <p
+                          style={{
+                            fontWeight: "500",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          {file.name}
+                        </p>
+                        <p style={{ fontSize: "14px", color: "#666" }}>
+                          {(file.size / 1024 / 1024).toFixed(2)} MB
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      onClick={clearFile}
+                      style={{
+                        padding: "8px",
+                        border: "none",
+                        background: "transparent",
+                        cursor: "pointer",
+                        fontSize: "18px",
+                      }}
+                    >
+                      ✕
+                    </button>
+                  </div>
 
-              <div
+                  <div
+                    style={{
+                      borderRadius: "8px",
+                      overflow: "hidden",
+                      backgroundColor: "#f5f5f5",
+                      marginBottom: "20px",
+                    }}
+                  >
+                    {isVideo ? (
+                      <video
+                        src={preview || undefined}
+                        controls
+                        style={{
+                          width: "100%",
+                          maxHeight: "400px",
+                          objectFit: "contain",
+                        }}
+                      />
+                    ) : (
+                      <img
+                        src={preview || undefined}
+                        alt="Preview"
+                        style={{
+                          width: "100%",
+                          maxHeight: "400px",
+                          objectFit: "contain",
+                        }}
+                      />
+                    )}
+                  </div>
+
+                  {uploadedUrl && (
+                    <div
+                      style={{
+                        padding: "15px",
+                        backgroundColor: "#e8f5e9",
+                        borderRadius: "6px",
+                        marginBottom: "20px",
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontSize: "14px",
+                          fontWeight: "500",
+                          marginBottom: "5px",
+                        }}
+                      >
+                        File uploaded successfully!
+                      </p>
+                      <p
+                        style={{
+                          fontSize: "12px",
+                          color: "#666",
+                          wordBreak: "break-all",
+                        }}
+                      >
+                        GET URL: {uploadedUrl}
+                      </p>
+                    </div>
+                  )}
+
+                  <div style={{ display: "flex", gap: "10px" }}>
+                    <button
+                      onClick={clearFile}
+                      style={{
+                        flex: "1",
+                        padding: "12px",
+                        border: "1px solid #ddd",
+                        backgroundColor: "white",
+                        borderRadius: "6px",
+                        cursor: "pointer",
+                        fontSize: "14px",
+                      }}
+                    >
+                      Upload Different File
+                    </button>
+                    <button
+                      onClick={handleUpload}
+                      disabled={uploading}
+                      style={{
+                        flex: "1",
+                        padding: "12px",
+                        border: "none",
+                        backgroundColor: uploading ? "#ccc" : "#0066cc",
+                        color: "white",
+                        borderRadius: "6px",
+                        cursor: uploading ? "not-allowed" : "pointer",
+                        fontSize: "14px",
+                        fontWeight: "500",
+                      }}
+                    >
+                      {uploading
+                        ? "Uploading..."
+                        : uploadedUrl
+                        ? "Uploaded ✓"
+                        : "Upload File"}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div style={{ flex: "1", minWidth: "300px" }}>
+            <div
+              style={{
+                border: "1px solid #ddd",
+                borderRadius: "8px",
+                padding: "20px",
+                backgroundColor: "white",
+              }}
+            >
+              <h2
                 style={{
-                  borderRadius: "8px",
-                  overflow: "hidden",
-                  backgroundColor: "#f5f5f5",
+                  fontSize: "20px",
+                  fontWeight: "bold",
                   marginBottom: "20px",
                 }}
               >
-                {isVideo ? (
-                  <video
-                    src={preview || undefined}
-                    controls
-                    style={{
-                      width: "100%",
-                      maxHeight: "400px",
-                      objectFit: "contain",
-                    }}
-                  />
-                ) : (
-                  <img
-                    src={preview || undefined}
-                    alt="Preview"
-                    style={{
-                      width: "100%",
-                      maxHeight: "400px",
-                      objectFit: "contain",
-                    }}
-                  />
-                )}
-              </div>
+                Uploaded Files
+              </h2>
 
-              {uploadedUrl && (
+              {uploadedFiles.length === 0 ? (
+                <p
+                  style={{
+                    color: "#666",
+                    textAlign: "center",
+                    padding: "40px 0",
+                  }}
+                >
+                  No files uploaded yet
+                </p>
+              ) : (
                 <div
                   style={{
-                    padding: "15px",
-                    backgroundColor: "#e8f5e9",
-                    borderRadius: "6px",
-                    marginBottom: "20px",
+                    display: "grid",
+                    gridTemplateColumns:
+                      "repeat(auto-fill, minmax(120px, 1fr))",
+                    gap: "15px",
                   }}
                 >
-                  <p
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: "500",
-                      marginBottom: "5px",
-                    }}
-                  >
-                    File uploaded successfully!
-                  </p>
-                  <p
-                    style={{
-                      fontSize: "12px",
-                      color: "#666",
-                      wordBreak: "break-all",
-                    }}
-                  >
-                    GET URL: {uploadedUrl}
-                  </p>
+                  {uploadedFiles.map((fileItem) => (
+                    <div
+                      key={fileItem.name}
+                      style={{
+                        border: "1px solid #e0e0e0",
+                        borderRadius: "8px",
+                        overflow: "hidden",
+                        backgroundColor: "#fafafa",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "100%",
+                          height: "120px",
+                          backgroundColor: "#f0f0f0",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          overflow: "hidden",
+                        }}
+                      >
+                        {fileItem.isImage ? (
+                          <img
+                            src={fileItem.url || "/placeholder.svg"}
+                            alt={fileItem.displayName}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                            }}
+                          />
+                        ) : fileItem.isVideo ? (
+                          <video
+                            src={fileItem.url}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                            }}
+                          />
+                        ) : (
+                          <span style={{ fontSize: "32px" }}>📄</span>
+                        )}
+                      </div>
+                      <div style={{ padding: "8px" }}>
+                        <p
+                          style={{
+                            fontSize: "12px",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            whiteSpace: "nowrap",
+                            margin: 0,
+                          }}
+                        >
+                          {fileItem.displayName}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               )}
-
-              <div style={{ display: "flex", gap: "10px" }}>
-                <button
-                  onClick={clearFile}
-                  style={{
-                    flex: "1",
-                    padding: "12px",
-                    border: "1px solid #ddd",
-                    backgroundColor: "white",
-                    borderRadius: "6px",
-                    cursor: "pointer",
-                    fontSize: "14px",
-                  }}
-                >
-                  Upload Different File
-                </button>
-                <button
-                  onClick={handleUpload}
-                  disabled={uploading}
-                  style={{
-                    flex: "1",
-                    padding: "12px",
-                    border: "none",
-                    backgroundColor: uploading ? "#ccc" : "#0066cc",
-                    color: "white",
-                    borderRadius: "6px",
-                    cursor: uploading ? "not-allowed" : "pointer",
-                    fontSize: "14px",
-                    fontWeight: "500",
-                  }}
-                >
-                  {uploading
-                    ? "Uploading..."
-                    : uploadedUrl
-                    ? "Uploaded ✓"
-                    : "Upload File"}
-                </button>
-              </div>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </main>
