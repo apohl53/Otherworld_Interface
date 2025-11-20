@@ -1,58 +1,67 @@
-import { NextResponse } from "next/server";
+// import { addFile } from "../../../lib/file-store";
+
+// const fileStore = [];
+
+export function addFile(file) {
+  fileStore.push(file);
+}
+
+export function getFiles() {
+  return fileStore;
+}
 
 export const dynamic = "force-dynamic";
 
 export async function POST(request) {
-  console.log("[v0] API route hit");
+  console.log("[v0] Upload API route hit");
 
   try {
-    // Try to use fs only on Node.js runtime
-    const { writeFile, mkdir } = await import("fs/promises");
-    const { join } = await import("path");
-
     const formData = await request.formData();
-    console.log("[v0] FormData parsed");
-
     const file = formData.get("file");
-    console.log("[v0] File from formData:", file?.name, file?.size);
 
     if (!file) {
-      console.log("[v0] No file in request");
-      return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
+      return Response.json({ error: "No file uploaded" }, { status: 400 });
     }
 
+    console.log("[v0] File received:", file.name, file.size);
+
+    // Convert file to base64 data URL for in-memory storage
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    console.log("[v0] File buffer created, size:", buffer.length);
+    const base64 = buffer.toString("base64");
+    const dataUrl = `data:${file.type};base64,${base64}`;
 
-    // Create uploads directory if it doesn't exist
-    const uploadDir = join(process.cwd(), "public", "uploads");
-    console.log("[v0] Upload directory:", uploadDir);
-    await mkdir(uploadDir, { recursive: true });
-
-    // Save file with timestamp to avoid conflicts
     const timestamp = Date.now();
     const filename = `${timestamp}-${file.name}`;
-    const filepath = join(uploadDir, filename);
-    console.log("[v0] Saving to:", filepath);
 
-    await writeFile(filepath, buffer);
-    console.log("[v0] File saved successfully");
+    const fileData = {
+      name: filename,
+      url: dataUrl,
+      displayName: file.name,
+      size: file.size,
+      type: file.type,
+      isImage: file.type.startsWith("image/"),
+      isVideo: file.type.startsWith("video/"),
+      timestamp,
+    };
 
-    // Return the public URL
-    const url = `/uploads/${filename}`;
+    addFile(fileData);
+    console.log("[v0] File stored in memory:", filename);
 
-    return NextResponse.json({
+    return Response.json({
       success: true,
-      url,
+      url: dataUrl,
       filename,
       size: file.size,
       type: file.type,
     });
   } catch (error) {
     console.error("[v0] Upload error:", error);
-    return NextResponse.json(
-      { error: "Upload failed: " + error.message },
+    return Response.json(
+      {
+        success: false,
+        error: error.message || "Upload failed",
+      },
       { status: 500 }
     );
   }

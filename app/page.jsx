@@ -14,10 +14,19 @@ export default function Home() {
   const fetchUploadedFiles = async () => {
     try {
       const response = await fetch("/api/files");
+
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        console.error("[v0] API returned non-JSON response:", contentType);
+        setUploadedFiles([]);
+        return;
+      }
+
       const data = await response.json();
       setUploadedFiles(data.files || []);
     } catch (error) {
-      console.error("Error fetching files:", error);
+      console.error("[v0] Error fetching files:", error);
+      setUploadedFiles([]);
     }
   };
 
@@ -69,37 +78,33 @@ export default function Home() {
   };
 
   const handleUpload = async () => {
-    console.log("[v0] handleUpload called, file:", file);
-
     if (!file) {
-      console.log("[v0] No file selected");
       return;
     }
 
     setUploading(true);
-    console.log("[v0] Starting upload...");
 
     try {
       const formData = new FormData();
       formData.append("file", file);
-      console.log("[v0] FormData created, sending request to /api/upload");
 
       const response = await fetch("/api/upload", {
         method: "POST",
         body: formData,
       });
 
-      console.log("[v0] Response received:", response.status);
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        console.error("[v0] Upload API returned non-JSON response");
+        alert("Upload failed: Server returned an error");
+        return;
+      }
+
       const data = await response.json();
-      console.log("[v0] Response data:", data);
 
       if (data.success) {
-        setUploadedUrl(window.location.origin + data.url);
-        alert(
-          `File uploaded successfully! Access it at: ${
-            window.location.origin + data.url
-          }`
-        );
+        setUploadedUrl(data.url);
+        alert(`File uploaded successfully!`);
         fetchUploadedFiles();
       } else {
         alert("Upload failed: " + data.error);
@@ -109,7 +114,6 @@ export default function Home() {
       alert("Upload failed: " + error.message);
     } finally {
       setUploading(false);
-      console.log("[v0] Upload complete");
     }
   };
 
@@ -326,14 +330,8 @@ export default function Home() {
                       >
                         File uploaded successfully!
                       </p>
-                      <p
-                        style={{
-                          fontSize: "12px",
-                          color: "#666",
-                          wordBreak: "break-all",
-                        }}
-                      >
-                        GET URL: {uploadedUrl}
+                      <p style={{ fontSize: "12px", color: "#666" }}>
+                        File stored in memory (preview environment)
                       </p>
                     </div>
                   )}
