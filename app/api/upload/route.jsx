@@ -14,31 +14,29 @@ export async function POST(request) {
       return Response.json({ error: "No file uploaded" }, { status: 400 });
     }
 
-    // Prepare upload directory
-    const uploadDir = path.join(process.cwd(), "uploads");
+    // Save to public/uploads — must match your GET route
+    const uploadDir = path.join(process.cwd(), "public", "uploads");
+
     try {
       await stat(uploadDir);
     } catch (err) {
       await mkdir(uploadDir, { recursive: true });
     }
 
-    // Convert file to buffer
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Create filename
     const timestamp = Date.now();
-    const filename = `${timestamp}-${file.name}`;
+    const filename = file.name;
     const filepath = path.join(uploadDir, filename);
 
-    // Write file to disk
     await writeFile(filepath, buffer);
     console.log("[v0] File saved to:", filepath);
 
     return Response.json({
       success: true,
       filename,
-      path: `/uploads/${filename}`, // not public yet, but good for metadata
+      path: `/uploads/${filename}`,
       size: file.size,
       type: file.type,
     });

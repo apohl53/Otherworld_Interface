@@ -73,8 +73,8 @@ async function POST(request) {
                 status: 400
             });
         }
-        // Prepare upload directory
-        const uploadDir = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(process.cwd(), "uploads");
+        // Save to public/uploads — must match your GET route
+        const uploadDir = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(process.cwd(), "public", "uploads");
         try {
             await (0, __TURBOPACK__imported__module__$5b$externals$5d2f$fs$2f$promises__$5b$external$5d$__$28$fs$2f$promises$2c$__cjs$29$__["stat"])(uploadDir);
         } catch (err) {
@@ -82,14 +82,11 @@ async function POST(request) {
                 recursive: true
             });
         }
-        // Convert file to buffer
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
-        // Create filename
         const timestamp = Date.now();
-        const filename = `${timestamp}-${file.name}`;
+        const filename = file.name;
         const filepath = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(uploadDir, filename);
-        // Write file to disk
         await (0, __TURBOPACK__imported__module__$5b$externals$5d2f$fs$2f$promises__$5b$external$5d$__$28$fs$2f$promises$2c$__cjs$29$__["writeFile"])(filepath, buffer);
         console.log("[v0] File saved to:", filepath);
         return Response.json({
