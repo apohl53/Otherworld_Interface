@@ -35,27 +35,31 @@ const mod = __turbopack_context__.x("next/dist/shared/lib/no-fallback-error.exte
 
 module.exports = mod;
 }),
-"[project]/app/api/upload/route.jsx [app-route] (ecmascript)", ((__turbopack_context__) => {
+"[externals]/fs/promises [external] (fs/promises, cjs)", ((__turbopack_context__, module, exports) => {
+
+const mod = __turbopack_context__.x("fs/promises", () => require("fs/promises"));
+
+module.exports = mod;
+}),
+"[externals]/path [external] (path, cjs)", ((__turbopack_context__, module, exports) => {
+
+const mod = __turbopack_context__.x("path", () => require("path"));
+
+module.exports = mod;
+}),
+"[project]/app/api/files/route.jsx [app-route] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-// import { addFile } from "../../../lib/file-store";
 __turbopack_context__.s([
     "POST",
     ()=>POST,
-    "addFile",
-    ()=>addFile,
     "dynamic",
-    ()=>dynamic,
-    "getFiles",
-    ()=>getFiles
+    ()=>dynamic
 ]);
-const fileStore = [];
-function addFile(file) {
-    fileStore.push(file);
-}
-function getFiles() {
-    return fileStore;
-}
+var __TURBOPACK__imported__module__$5b$externals$5d2f$fs$2f$promises__$5b$external$5d$__$28$fs$2f$promises$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/fs/promises [external] (fs/promises, cjs)");
+var __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/path [external] (path, cjs)");
+;
+;
 const dynamic = "force-dynamic";
 async function POST(request) {
     console.log("[v0] Upload API route hit");
@@ -69,30 +73,22 @@ async function POST(request) {
                 status: 400
             });
         }
-        console.log("[v0] File received:", file.name, file.size);
-        // Convert file to base64 data URL for in-memory storage
+        // Prepare upload directory
+        const uploadDir = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(process.cwd(), "public", "uploads");
+        // Convert file to buffer
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
-        const base64 = buffer.toString("base64");
-        const dataUrl = `data:${file.type};base64,${base64}`;
+        // Create filename
         const timestamp = Date.now();
         const filename = `${timestamp}-${file.name}`;
-        const fileData = {
-            name: filename,
-            url: dataUrl,
-            displayName: file.name,
-            size: file.size,
-            type: file.type,
-            isImage: file.type.startsWith("image/"),
-            isVideo: file.type.startsWith("video/"),
-            timestamp
-        };
-        addFile(fileData);
-        console.log("[v0] File stored in memory:", filename);
+        const filepath = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(uploadDir, filename);
+        // Write file to disk
+        await (0, __TURBOPACK__imported__module__$5b$externals$5d2f$fs$2f$promises__$5b$external$5d$__$28$fs$2f$promises$2c$__cjs$29$__["writeFile"])(filepath, buffer);
+        console.log("[v0] File saved to:", filepath);
         return Response.json({
             success: true,
-            url: dataUrl,
             filename,
+            path: `/uploads/${filename}`,
             size: file.size,
             type: file.type
         });
@@ -109,4 +105,4 @@ async function POST(request) {
 }),
 ];
 
-//# sourceMappingURL=%5Broot-of-the-server%5D__320c4f08._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__283936de._.js.map

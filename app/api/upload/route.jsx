@@ -1,14 +1,5 @@
-// import { addFile } from "../../../lib/file-store";
-
-// const fileStore = [];
-
-export function addFile(file) {
-  fileStore.push(file);
-}
-
-export function getFiles() {
-  return fileStore;
-}
+import { writeFile, mkdir, stat } from "fs/promises";
+import path from "path";
 
 export const dynamic = "force-dynamic";
 
@@ -23,35 +14,31 @@ export async function POST(request) {
       return Response.json({ error: "No file uploaded" }, { status: 400 });
     }
 
-    console.log("[v0] File received:", file.name, file.size);
+    // Prepare upload directory
+    const uploadDir = path.join(process.cwd(), "uploads");
+    try {
+      await stat(uploadDir);
+    } catch (err) {
+      await mkdir(uploadDir, { recursive: true });
+    }
 
-    // Convert file to base64 data URL for in-memory storage
+    // Convert file to buffer
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    const base64 = buffer.toString("base64");
-    const dataUrl = `data:${file.type};base64,${base64}`;
 
+    // Create filename
     const timestamp = Date.now();
     const filename = `${timestamp}-${file.name}`;
+    const filepath = path.join(uploadDir, filename);
 
-    const fileData = {
-      name: filename,
-      url: dataUrl,
-      displayName: file.name,
-      size: file.size,
-      type: file.type,
-      isImage: file.type.startsWith("image/"),
-      isVideo: file.type.startsWith("video/"),
-      timestamp,
-    };
-
-    addFile(fileData);
-    console.log("[v0] File stored in memory:", filename);
+    // Write file to disk
+    await writeFile(filepath, buffer);
+    console.log("[v0] File saved to:", filepath);
 
     return Response.json({
       success: true,
-      url: dataUrl,
       filename,
+      path: `/uploads/${filename}`, // not public yet, but good for metadata
       size: file.size,
       type: file.type,
     });
