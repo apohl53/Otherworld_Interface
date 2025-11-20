@@ -13,6 +13,7 @@ export default function Home() {
 
   const fetchUploadedFiles = async () => {
     try {
+      console.log("[v0] Fetching uploaded files...");
       const response = await fetch("/api/files");
 
       const contentType = response.headers.get("content-type");
@@ -23,6 +24,11 @@ export default function Home() {
       }
 
       const data = await response.json();
+      console.log("[v0] Received files data:", data);
+      console.log("[v0] Number of files:", data.files?.length || 0);
+      if (data.files && data.files.length > 0) {
+        console.log("[v0] First file structure:", data.files[0]);
+      }
       setUploadedFiles(data.files || []);
     } catch (error) {
       console.error("[v0] Error fetching files:", error);
@@ -416,65 +422,72 @@ export default function Home() {
                     gap: "15px",
                   }}
                 >
-                  {uploadedFiles.map((fileItem) => (
-                    <div
-                      key={fileItem.name}
-                      style={{
-                        border: "1px solid #e0e0e0",
-                        borderRadius: "8px",
-                        overflow: "hidden",
-                        backgroundColor: "#fafafa",
-                      }}
-                    >
+                  {uploadedFiles.map((fileItem, index) => {
+                    console.log(
+                      "[v0] Rendering file item:",
+                      fileItem.fileName,
+                      fileItem
+                    );
+                    return (
                       <div
+                        key={fileItem.filename}
                         style={{
-                          width: "100%",
-                          height: "120px",
-                          backgroundColor: "#f0f0f0",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
+                          border: "1px solid #e0e0e0",
+                          borderRadius: "8px",
                           overflow: "hidden",
+                          backgroundColor: "#fafafa",
                         }}
                       >
-                        {fileItem.isImage ? (
-                          <img
-                            src={fileItem.url || "/placeholder.svg"}
-                            alt={fileItem.displayName}
-                            style={{
-                              width: "100%",
-                              height: "100%",
-                              objectFit: "cover",
-                            }}
-                          />
-                        ) : fileItem.isVideo ? (
-                          <video
-                            src={fileItem.url}
-                            style={{
-                              width: "100%",
-                              height: "100%",
-                              objectFit: "cover",
-                            }}
-                          />
-                        ) : (
-                          <span style={{ fontSize: "32px" }}>📄</span>
-                        )}
-                      </div>
-                      <div style={{ padding: "8px" }}>
-                        <p
+                        <div
                           style={{
-                            fontSize: "12px",
+                            width: "100%",
+                            height: "120px",
+                            backgroundColor: "#f0f0f0",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
                             overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap",
-                            margin: 0,
                           }}
                         >
-                          {fileItem.displayName}
-                        </p>
+                          {fileItem.isImage ? (
+                            <img
+                              src={fileItem.url || "/placeholder.svg"}
+                              alt={fileItem.filename}
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                              }}
+                            />
+                          ) : fileItem.isVideo ? (
+                            <video
+                              src={fileItem.url}
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                              }}
+                            />
+                          ) : (
+                            <span style={{ fontSize: "32px" }}>📄</span>
+                          )}
+                        </div>
+                        <div style={{ padding: "8px" }}>
+                          <p
+                            style={{
+                              fontSize: "12px",
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                              whiteSpace: "nowrap",
+                              margin: 0,
+                            }}
+                          >
+                            {fileItem.filename}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>

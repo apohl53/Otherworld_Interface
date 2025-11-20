@@ -68,13 +68,31 @@ async function GET() {
     try {
         const uploadDir = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(process.cwd(), "public", "uploads");
         const filenames = await __TURBOPACK__imported__module__$5b$externals$5d2f$fs$2f$promises__$5b$external$5d$__$28$fs$2f$promises$2c$__cjs$29$__["default"].readdir(uploadDir);
-        const files = filenames.map((name)=>({
-                name,
-                path: `/uploads/${name}`
-            }));
+        const files = filenames.map((name)=>{
+            const ext = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].extname(name).toLowerCase();
+            const isImage = [
+                ".png",
+                ".jpg",
+                ".jpeg",
+                ".gif",
+                ".webp"
+            ].includes(ext);
+            const isVideo = [
+                ".mp4",
+                ".mov",
+                ".avi",
+                ".mkv"
+            ].includes(ext);
+            return {
+                filename: name,
+                url: `/uploads/${name}`,
+                isImage,
+                isVideo
+            };
+        });
         return Response.json({
             files: files.reverse()
-        }); // newest first
+        });
     } catch (error) {
         console.error("[v0] Files API error:", error);
         return Response.json({

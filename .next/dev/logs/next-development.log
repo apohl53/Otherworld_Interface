@@ -1,13 +1,47 @@
-[00:00:00.582] Server  LOG      ✓ Ready in 449ms
-[00:00:00.703] Server  WARN     ⚠ Cross origin request detected from 192.168.182.152 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+[00:00:00.586] Server  LOG      ✓ Ready in 455ms
+[00:00:01.682] Server  WARN     ⚠ Cross origin request detected from 192.168.182.152 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:00:01.940] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:01.941] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:01.941] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.182.152:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://192.168.182.152:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763675826086}
-[00:00:03.381] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:03.381] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:03.381] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.182.152:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://192.168.182.152:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763675827527}
-[00:00:44.192] Server  LOG      ✓ Compiled in 20ms
-[00:00:47.699] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:47.699] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:47.699] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.182.152:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://192.168.182.152:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763675871843}
+[00:00:03.677] Browser LOG     [v0] Fetching uploaded files...
+[00:00:03.677] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:03.677] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:03.677] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.182.152:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://192.168.182.152:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763680046372}
+[00:00:03.677] Browser LOG     [v0] Received files data: {"files":[{"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"},{"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"},{"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}]}
+[00:00:03.677] Browser LOG     [v0] Number of files: 3
+[00:00:03.677] Browser LOG     [v0] First file structure: {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
+[00:00:03.677] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
+[00:00:03.677] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
+[00:00:03.677] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
+[00:00:03.677] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
+[00:00:03.678] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
+[00:00:03.678] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
+[00:00:06.600] Browser LOG     [v0] Fetching uploaded files...
+[00:00:06.600] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:06.600] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:06.600] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.182.152:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://192.168.182.152:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763680050201}
+[00:00:06.600] Browser LOG     [v0] Received files data: {"files":[{"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"},{"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"},{"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}]}
+[00:00:06.600] Browser LOG     [v0] Number of files: 3
+[00:00:06.600] Browser LOG     [v0] First file structure: {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
+[00:00:06.600] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
+[00:00:06.600] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
+[00:00:06.600] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
+[00:00:06.600] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
+[00:00:06.600] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
+[00:00:06.600] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
+[00:02:26.713] Browser LOG     [v0] Fetching uploaded files...
+[00:02:26.713] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:02:26.713] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:02:26.713] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.182.152:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://192.168.182.152:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763680190300}
+[00:02:26.713] Browser ERROR   [v0] API returned non-JSON response: null
+[00:02:43.041] Browser LOG     [v0] Fetching uploaded files...
+[00:02:43.041] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:02:43.041] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:02:43.041] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.182.152:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://192.168.182.152:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763680206623}
+[00:02:43.041] Browser LOG     [v0] Received files data: {"files":[{"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"},{"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"},{"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}]}
+[00:02:43.041] Browser LOG     [v0] Number of files: 3
+[00:02:43.041] Browser LOG     [v0] First file structure: {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
+[00:02:43.041] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
+[00:02:43.041] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
+[00:02:43.041] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
+[00:02:43.041] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
+[00:02:43.041] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
+[00:02:43.041] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
