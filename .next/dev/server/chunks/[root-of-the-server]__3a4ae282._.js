@@ -64,11 +64,28 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$2
 ;
 const runtime = "nodejs";
 const dynamic = "force-dynamic";
+// Recursive file walker
+async function getAllFiles(dir) {
+    const dirents = await __TURBOPACK__imported__module__$5b$externals$5d2f$fs$2f$promises__$5b$external$5d$__$28$fs$2f$promises$2c$__cjs$29$__["default"].readdir(dir, {
+        withFileTypes: true
+    });
+    const files = [];
+    for (const dirent of dirents){
+        const fullPath = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(dir, dirent.name);
+        if (dirent.isDirectory()) {
+            files.push(...await getAllFiles(fullPath));
+        } else {
+            files.push(fullPath);
+        }
+    }
+    return files;
+}
 async function GET() {
     try {
-        const uploadDir = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(process.cwd(), "public", "uploads");
-        const filenames = await __TURBOPACK__imported__module__$5b$externals$5d2f$fs$2f$promises__$5b$external$5d$__$28$fs$2f$promises$2c$__cjs$29$__["default"].readdir(uploadDir);
-        const files = filenames.map((name)=>{
+        const uploadDir = "/Users/Otherworld/TD_Application/PHL Box Office/Assets/Event Assets";
+        const allFilePaths = await getAllFiles(uploadDir);
+        const files = allFilePaths.map((fullPath)=>{
+            const name = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].basename(fullPath);
             const ext = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].extname(name).toLowerCase();
             const isImage = [
                 ".png",
@@ -85,18 +102,18 @@ async function GET() {
             ].includes(ext);
             return {
                 filename: name,
-                url: `/uploads/${name}`,
+                fullPath,
+                url: `/api/files/${encodeURIComponent(fullPath)}`,
                 isImage,
                 isVideo
             };
         });
         return Response.json({
-            files: files.reverse()
+            files
         });
     } catch (error) {
-        console.error("[v0] Files API error:", error);
+        console.error("Files API error:", error);
         return Response.json({
-            files: [],
             error: error.message
         }, {
             status: 500

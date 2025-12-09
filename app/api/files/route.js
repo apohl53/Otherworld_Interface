@@ -4,28 +4,51 @@ import path from "path";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+// Recursive file walker
+async function getAllFiles(dir) {
+  const dirents = await fs.readdir(dir, { withFileTypes: true });
+  const files = [];
+
+  for (const dirent of dirents) {
+    const fullPath = path.join(dir, dirent.name);
+
+    if (dirent.isDirectory()) {
+      files.push(...await getAllFiles(fullPath));
+    } else {
+      files.push(fullPath);
+    }
+  }
+
+  return files;
+}
+
 export async function GET() {
   try {
-    const uploadDir = path.join(process.cwd(), "public", "uploads");
-    const filenames = await fs.readdir(uploadDir);
+    const uploadDir = "/Users/Otherworld/TD_Application/PHL Box Office/Assets/Event Assets";
 
-    const files = filenames.map((name) => {
+    const allFilePaths = await getAllFiles(uploadDir);
+
+    const files = allFilePaths.map(fullPath => {
+      const name = path.basename(fullPath);
       const ext = path.extname(name).toLowerCase();
 
       const isImage = [".png", ".jpg", ".jpeg", ".gif", ".webp"].includes(ext);
       const isVideo = [".mp4", ".mov", ".avi", ".mkv"].includes(ext);
 
       return {
-        filename: name, // <-- what your UI uses
-        url: `/uploads/${name}`, // <-- what your UI uses
+        filename: name,
+        fullPath,
+        url: `/api/files/${encodeURIComponent(fullPath)}`,
         isImage,
         isVideo,
       };
     });
 
-    return Response.json({ files: files.reverse() });
+    return Response.json({ files });
   } catch (error) {
-    console.error("[v0] Files API error:", error);
-    return Response.json({ files: [], error: error.message }, { status: 500 });
+    console.error("Files API error:", error);
+    return Response.json({ error: error.message }, { status: 500 });
   }
 }
+
+
