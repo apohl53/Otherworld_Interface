@@ -36,6 +36,22 @@ export default function Home() {
     }
   };
 
+  const handleDelete = async (fullPath) => {
+  if (!confirm("Delete this file?")) return;
+
+  try {
+    await fetch(`/api/files?path=${encodeURIComponent(fullPath)}`, {
+      method: "DELETE",
+    });
+
+    // Refresh list
+    fetchUploadedFiles();
+  } catch (err) {
+    console.error("Delete failed:", err);
+    alert("Could not delete file.");
+  }
+};
+
   useEffect(() => {
     fetchUploadedFiles();
   }, []);
@@ -436,6 +452,7 @@ export default function Home() {
                           borderRadius: "8px",
                           overflow: "hidden",
                           backgroundColor: "#fafafa",
+                           position: "relative",
                         }}
                       >
                         <div
@@ -485,6 +502,26 @@ export default function Home() {
                             {fileItem.filename}
                           </p>
                         </div>
+
+                        {/* DELETE BUTTON */}
+      <button
+        onClick={() => handleDelete(fileItem.fullPath)}
+        style={{
+          position: "absolute",
+          top: "6px",
+          right: "6px",
+          background: "rgba(255, 0, 0, 0.85)",
+          color: "white",
+          border: "none",
+          borderRadius: "4px",
+          padding: "4px 6px",
+          fontSize: "10px",
+          cursor: "pointer",
+        }}
+      >
+        ✕
+      </button>
+   
                       </div>
                     );
                   })}

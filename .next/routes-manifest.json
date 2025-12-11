@@ -19,7 +19,16 @@
     "afterFiles": [],
     "fallback": []
   },
-  "dynamicRoutes": [],
+  "dynamicRoutes": [
+    {
+      "page": "/api/files/[...filepath]",
+      "regex": "^/api/files/(.+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPfilepath": "nxtPfilepath"
+      },
+      "namedRegex": "^/api/files/(?<nxtPfilepath>.+?)(?:/)?$"
+    }
+  ],
   "staticRoutes": [
     {
       "page": "/",
