@@ -1,180 +1,55 @@
-[00:00:00.540] Server  LOG      ✓ Ready in 409ms
-[00:00:22.013] Server  WARN     ⚠ Cross origin request detected from 192.168.182.152 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
-Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:00:22.172] Browser LOG     [v0] Fetching uploaded files...
-[00:00:22.172] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:22.172] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:22.172] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.182.152:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://192.168.182.152:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763680280580}
-[00:00:22.272] Browser LOG     [v0] Received files data: {"files":[{"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"},{"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"},{"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}]}
-[00:00:22.272] Browser LOG     [v0] Number of files: 3
-[00:00:22.272] Browser LOG     [v0] First file structure: {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:22.273] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:22.273] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:00:22.273] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:00:22.273] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:22.273] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:00:22.273] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:00:23.613] Browser LOG     [v0] Fetching uploaded files...
-[00:00:23.613] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:23.613] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:23.613] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.182.152:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://192.168.182.152:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763680282034}
-[00:00:23.613] Browser LOG     [v0] Received files data: {"files":[{"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"},{"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"},{"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}]}
-[00:00:23.613] Browser LOG     [v0] Number of files: 3
-[00:00:23.613] Browser LOG     [v0] First file structure: {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:23.613] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:23.613] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:00:23.613] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:00:23.613] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:23.613] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:00:23.613] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:00:30.167] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:30.167] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:00:30.167] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:00:30.167] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:30.167] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:00:30.167] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:00:31.113] Server  LOG     [v0] Upload API route hit
-[00:00:31.116] Server  LOG     [v0] File saved to: "/Users/alexpohlman/Otherworld_Interface/uploads/1763680289642-bg.png"
-[00:00:32.364] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:32.364] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:00:32.364] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:00:32.365] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:32.365] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:00:32.365] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:00:32.365] Browser LOG     [v0] Fetching uploaded files...
-[00:00:32.365] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:32.365] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:00:32.365] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:00:32.365] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:32.365] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:00:32.365] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:00:32.365] Browser LOG     [v0] Received files data: {"files":[{"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"},{"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"},{"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}]}
-[00:00:32.365] Browser LOG     [v0] Number of files: 3
-[00:00:32.365] Browser LOG     [v0] First file structure: {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:32.365] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:32.365] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:00:32.365] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:00:32.365] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:32.365] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:00:32.365] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:00:34.394] Browser LOG     [v0] Fetching uploaded files...
-[00:00:34.394] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:34.394] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:34.394] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.182.152:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://192.168.182.152:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763680292816}
-[00:00:34.394] Browser LOG     [v0] Received files data: {"files":[{"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"},{"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"},{"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}]}
-[00:00:34.394] Browser LOG     [v0] Number of files: 3
-[00:00:34.394] Browser LOG     [v0] First file structure: {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:34.394] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:34.394] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:00:34.394] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:00:34.394] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:00:34.394] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:00:34.394] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:05:50.789] Browser LOG     [v0] Fetching uploaded files...
-[00:05:50.789] Browser LOG     [v0] Received files data: {"files":[{"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"},{"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"},{"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}]}
-[00:05:50.789] Browser LOG     [v0] Number of files: 3
-[00:05:50.789] Browser LOG     [v0] First file structure: {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:05:50.789] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:05:50.789] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:05:50.789] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:05:50.789] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:05:50.789] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:05:50.789] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:05:50.789] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:05:50.789] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:05:50.789] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.182.152:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://192.168.182.152:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763680609216}
-[00:05:54.839] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:05:54.839] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:05:54.839] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:05:54.839] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:05:54.839] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:05:54.839] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:05:55.660] Server  LOG     [v0] Upload API route hit
-[00:05:55.663] Server  LOG     [v0] File saved to: "/Users/alexpohlman/Otherworld_Interface/public/uploads/1763680614190-bg.png"
-[00:05:56.987] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [v0] Fetching uploaded files...
-[00:05:56.988] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [v0] Received files data: {"files":[{"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"},{"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"},{"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"},{"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}]}
-[00:05:56.988] Browser LOG     [v0] Number of files: 4
-[00:05:56.988] Browser LOG     [v0] First file structure: {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
-[00:05:56.988] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
-[00:05:56.988] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
-[00:05:56.988] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:05:56.988] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:05:58.775] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
-[00:05:58.775] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:05:58.775] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:05:58.775] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:05:58.775] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
-[00:05:58.775] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:05:58.775] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:05:58.775] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:09:19.194] Browser LOG     [v0] Fetching uploaded files...
-[00:09:19.194] Browser LOG     [v0] Received files data: {"files":[{"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"},{"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"},{"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"},{"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}]}
-[00:09:19.194] Browser LOG     [v0] Number of files: 4
-[00:09:19.194] Browser LOG     [v0] First file structure: {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
-[00:09:19.194] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
-[00:09:19.194] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:09:19.194] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:09:19.194] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:09:19.194] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
-[00:09:19.194] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:09:19.194] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:09:19.194] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:09:19.194] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:09:19.194] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:09:19.194] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.182.152:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://192.168.182.152:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763680817621}
-[00:09:24.348] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
-[00:09:24.348] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:09:24.349] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:09:24.349] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:09:24.349] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
-[00:09:24.349] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:09:24.349] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:09:24.349] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:09:25.223] Server  LOG     [v0] Upload API route hit
-[00:09:25.225] Server  LOG     [v0] File saved to: "/Users/alexpohlman/Otherworld_Interface/public/uploads/bg.png"
-[00:09:26.579] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
-[00:09:26.580] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
-[00:09:26.580] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [v0] Fetching uploaded files...
-[00:09:26.580] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
-[00:09:26.580] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
-[00:09:26.580] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [v0] Received files data: {"files":[{"filename":"bg.png","isImage":true,"isVideo":false,"url":"/uploads/bg.png"},{"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"},{"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"},{"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"},{"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}]}
-[00:09:26.580] Browser LOG     [v0] Number of files: 5
-[00:09:26.580] Browser LOG     [v0] First file structure: {"filename":"bg.png","isImage":true,"isVideo":false,"url":"/uploads/bg.png"}
-[00:09:26.580] Browser LOG     [v0] Rendering file item: undefined {"filename":"bg.png","isImage":true,"isVideo":false,"url":"/uploads/bg.png"}
-[00:09:26.580] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
-[00:09:26.580] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"bg.png","isImage":true,"isVideo":false,"url":"/uploads/bg.png"}
-[00:09:26.580] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
-[00:09:26.580] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
-[00:09:26.580] Browser LOG     [2;38;2;124;124;124m%s[0m [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
+[00:00:00.830] Server  LOG      ✓ Ready in 632ms
+[00:00:04.801] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:05.022] Browser LOG     [v0] Fetching uploaded files...
+[00:00:05.022] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:05.022] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:05.022] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765306525392}
+[00:00:05.022] Browser LOG     [v0] Received files data: {"files":[{"filename":"bg.png","isImage":true,"isVideo":false,"url":"/uploads/bg.png"},{"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"},{"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"},{"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"},{"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}]}
+[00:00:05.022] Browser LOG     [v0] Number of files: 5
+[00:00:05.022] Browser LOG     [v0] First file structure: {"filename":"bg.png","isImage":true,"isVideo":false,"url":"/uploads/bg.png"}
+[00:00:05.022] Browser LOG     [v0] Rendering file item: undefined {"filename":"bg.png","isImage":true,"isVideo":false,"url":"/uploads/bg.png"}
+[00:00:05.022] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
+[00:00:05.022] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
+[00:00:05.022] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
+[00:00:05.022] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
+[00:00:05.022] Browser LOG     [v0] Rendering file item: undefined {"filename":"bg.png","isImage":true,"isVideo":false,"url":"/uploads/bg.png"}
+[00:00:05.022] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
+[00:00:05.022] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
+[00:00:05.022] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
+[00:00:05.022] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
+[00:00:10.252] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:10.376] Browser LOG     [v0] Fetching uploaded files...
+[00:00:10.376] Browser LOG     [v0] Received files data: {"files":[{"filename":"bg.png","isImage":true,"isVideo":false,"url":"/uploads/bg.png"},{"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"},{"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"},{"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"},{"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}]}
+[00:00:10.376] Browser LOG     [v0] Number of files: 5
+[00:00:10.376] Browser LOG     [v0] First file structure: {"filename":"bg.png","isImage":true,"isVideo":false,"url":"/uploads/bg.png"}
+[00:00:10.376] Browser LOG     [v0] Rendering file item: undefined {"filename":"bg.png","isImage":true,"isVideo":false,"url":"/uploads/bg.png"}
+[00:00:10.376] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
+[00:00:10.376] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
+[00:00:10.376] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
+[00:00:10.376] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
+[00:00:10.376] Browser LOG     [v0] Rendering file item: undefined {"filename":"bg.png","isImage":true,"isVideo":false,"url":"/uploads/bg.png"}
+[00:00:10.376] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
+[00:00:10.376] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
+[00:00:10.376] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
+[00:00:10.376] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
+[00:00:10.376] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:10.376] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:10.376] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765306530791}
+[00:00:28.001] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:28.111] Browser LOG     [v0] Fetching uploaded files...
+[00:00:28.111] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:28.111] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:28.111] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765306548524}
+[00:00:28.111] Browser LOG     [v0] Received files data: {"files":[{"filename":"bg.png","isImage":true,"isVideo":false,"url":"/uploads/bg.png"},{"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"},{"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"},{"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"},{"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}]}
+[00:00:28.111] Browser LOG     [v0] Number of files: 5
+[00:00:28.111] Browser LOG     [v0] First file structure: {"filename":"bg.png","isImage":true,"isVideo":false,"url":"/uploads/bg.png"}
+[00:00:28.111] Browser LOG     [v0] Rendering file item: undefined {"filename":"bg.png","isImage":true,"isVideo":false,"url":"/uploads/bg.png"}
+[00:00:28.111] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
+[00:00:28.111] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
+[00:00:28.111] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
+[00:00:28.111] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
+[00:00:28.111] Browser LOG     [v0] Rendering file item: undefined {"filename":"bg.png","isImage":true,"isVideo":false,"url":"/uploads/bg.png"}
+[00:00:28.111] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763680614190-bg.png","isImage":true,"isVideo":false,"url":"/uploads/1763680614190-bg.png"}
+[00:00:28.111] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674928843-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674928843-desert road.jpeg"}
+[00:00:28.111] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674045722-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674045722-desert road.jpeg"}
+[00:00:28.111] Browser LOG     [v0] Rendering file item: undefined {"filename":"1763674009137-desert road.jpeg","isImage":true,"isVideo":false,"url":"/uploads/1763674009137-desert road.jpeg"}
