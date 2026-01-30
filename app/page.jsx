@@ -85,12 +85,29 @@ export default function Home() {
     }
   };
 
+  const persistOrder = async (files) => {
+    try {
+      await fetch("/api/files/reorder", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          orderedFilenames: files.map((f) => f.filename),
+        }),
+      });
+    } catch (err) {
+      console.error("Failed to persist file order:", err);
+    }
+  };
+
   // Move Files
   const reorderFiles = (fromIndex, toIndex) => {
     setUploadedFiles((prev) => {
       const updated = [...prev];
       const [moved] = updated.splice(fromIndex, 1);
       updated.splice(toIndex, 0, moved);
+
+      persistOrder(updated);
+
       return updated;
     });
   };

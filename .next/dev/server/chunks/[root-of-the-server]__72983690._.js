@@ -47,12 +47,12 @@ const mod = __turbopack_context__.x("path", () => require("path"));
 
 module.exports = mod;
 }),
-"[project]/app/api/files/route.js [app-route] (ecmascript)", ((__turbopack_context__) => {
+"[project]/app/api/files/reorder/route.js [app-route] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
 __turbopack_context__.s([
-    "GET",
-    ()=>GET,
+    "POST",
+    ()=>POST,
     "dynamic",
     ()=>dynamic,
     "runtime",
@@ -64,47 +64,23 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$2
 ;
 const runtime = "nodejs";
 const dynamic = "force-dynamic";
-async function GET() {
+async function POST(req) {
     try {
+        const { orderedFilenames } = await req.json();
         const uploadDir = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(process.cwd(), "public", "uploads");
         const orderFile = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(uploadDir, "order.json");
-        const filenames = await __TURBOPACK__imported__module__$5b$externals$5d2f$fs$2f$promises__$5b$external$5d$__$28$fs$2f$promises$2c$__cjs$29$__["default"].readdir(uploadDir);
-        // Load saved order (if it exists)
-        let orderMap = {};
-        try {
-            const orderData = await __TURBOPACK__imported__module__$5b$externals$5d2f$fs$2f$promises__$5b$external$5d$__$28$fs$2f$promises$2c$__cjs$29$__["default"].readFile(orderFile, "utf-8");
-            orderMap = JSON.parse(orderData);
-        } catch  {}
-        const files = filenames.filter((name)=>name !== "order.json").map((name)=>{
-            const ext = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].extname(name).toLowerCase();
-            const isImage = [
-                ".png",
-                ".jpg",
-                ".jpeg",
-                ".gif",
-                ".webp"
-            ].includes(ext);
-            const isVideo = [
-                ".mp4",
-                ".mov",
-                ".avi",
-                ".mkv"
-            ].includes(ext);
-            return {
-                filename: name,
-                url: `/uploads/${name}`,
-                isImage,
-                isVideo,
-                order: orderMap[name] ?? 9999
-            };
-        }).sort((a, b)=>a.order - b.order);
+        const orderMap = {};
+        orderedFilenames.forEach((name, index)=>{
+            orderMap[name] = index;
+        });
+        await __TURBOPACK__imported__module__$5b$externals$5d2f$fs$2f$promises__$5b$external$5d$__$28$fs$2f$promises$2c$__cjs$29$__["default"].writeFile(orderFile, JSON.stringify(orderMap, null, 2));
         return Response.json({
-            files
+            success: true
         });
     } catch (error) {
-        console.error("[v0] Files API error:", error);
+        console.error("[v0] Reorder error:", error);
         return Response.json({
-            files: [],
+            success: false,
             error: error.message
         }, {
             status: 500
@@ -114,4 +90,4 @@ async function GET() {
 }),
 ];
 
-//# sourceMappingURL=%5Broot-of-the-server%5D__3a4ae282._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__72983690._.js.map
