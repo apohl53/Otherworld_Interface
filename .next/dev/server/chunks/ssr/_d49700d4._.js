@@ -768,7 +768,7 @@ function Home() {
                                                         children: "✕"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.jsx",
-                                                        lineNumber: 514,
+                                                        lineNumber: 577,
                                                         columnNumber: 7
                                                     }, this)
                                                 ]

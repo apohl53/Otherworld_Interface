@@ -51,8 +51,6 @@ module.exports = mod;
 "use strict";
 
 __turbopack_context__.s([
-    "DELETE",
-    ()=>DELETE,
     "GET",
     ()=>GET,
     "dynamic",
@@ -66,59 +64,8 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$2
 ;
 const runtime = "nodejs";
 const dynamic = "force-dynamic";
-// Recursive file walker
-async function getAllFiles(dir) {
-    const dirents = await __TURBOPACK__imported__module__$5b$externals$5d2f$fs$2f$promises__$5b$external$5d$__$28$fs$2f$promises$2c$__cjs$29$__["default"].readdir(dir, {
-        withFileTypes: true
-    });
-    const files = [];
-    for (const dirent of dirents){
-        const fullPath = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(dir, dirent.name);
-        if (dirent.isDirectory()) {
-            files.push(...await getAllFiles(fullPath));
-        } else {
-            files.push(fullPath);
-        }
-    }
-    return files;
-}
-async function GET(req) {
+async function GET() {
     try {
-<<<<<<< HEAD
-        const filePath = req.nextUrl.searchParams.get("path");
-        // ---------------------------------------------
-        // CASE 1: Serve the file (image/video)
-        // ---------------------------------------------
-        if (filePath) {
-            const fileBuffer = await __TURBOPACK__imported__module__$5b$externals$5d2f$fs$2f$promises__$5b$external$5d$__$28$fs$2f$promises$2c$__cjs$29$__["default"].readFile(filePath);
-            const ext = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].extname(filePath).toLowerCase();
-            const mimeTypes = {
-                ".png": "image/png",
-                ".jpg": "image/jpeg",
-                ".jpeg": "image/jpeg",
-                ".gif": "image/gif",
-                ".webp": "image/webp",
-                ".mp4": "video/mp4",
-                ".mov": "video/quicktime",
-                ".avi": "video/x-msvideo",
-                ".mkv": "video/x-matroska"
-            };
-            const contentType = mimeTypes[ext] || "application/octet-stream";
-            return new Response(fileBuffer, {
-                headers: {
-                    "Content-Type": contentType,
-                    "Cache-Control": "no-store"
-                }
-            });
-        }
-        // ---------------------------------------------
-        // CASE 2: No `path` → Return file list (original behavior)
-        // ---------------------------------------------
-        const uploadDir = "/Users/Otherworld/TD_Application/PHL Box Office/Assets/Event Assets";
-        const allFilePaths = await getAllFiles(uploadDir);
-        const files = allFilePaths.map((fullPath)=>{
-            const name = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].basename(fullPath);
-=======
         const uploadDir = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(process.cwd(), "public", "uploads");
         const orderFile = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(uploadDir, "order.json");
         const filenames = await __TURBOPACK__imported__module__$5b$externals$5d2f$fs$2f$promises__$5b$external$5d$__$28$fs$2f$promises$2c$__cjs$29$__["default"].readdir(uploadDir);
@@ -129,7 +76,6 @@ async function GET(req) {
             orderMap = JSON.parse(orderData);
         } catch  {}
         const files = filenames.filter((name)=>name !== "order.json").map((name)=>{
->>>>>>> e209d099193ba1097a82e243906e8d963a6c9e1e
             const ext = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].extname(name).toLowerCase();
             const isImage = [
                 ".png",
@@ -146,9 +92,7 @@ async function GET(req) {
             ].includes(ext);
             return {
                 filename: name,
-                fullPath,
-                url: `/api/files?path=${encodeURIComponent(fullPath)}`,
-                imageUrl: isImage ? `/api/files?path=${encodeURIComponent(fullPath)}` : null,
+                url: `/uploads/${name}`,
                 isImage,
                 isVideo,
                 order: orderMap[name] ?? 9999
@@ -156,27 +100,6 @@ async function GET(req) {
         }).sort((a, b)=>a.order - b.order);
         return Response.json({
             files
-        });
-    } catch (error) {
-        console.error("Files API error:", error);
-        return Response.json({
-            error: error.message
-        }, {
-            status: 500
-        });
-    }
-}
-async function DELETE(req) {
-    try {
-        const filePath = req.nextUrl.searchParams.get("path");
-        if (!filePath) {
-            return new Response("Missing file path", {
-                status: 400
-            });
-        }
-        await __TURBOPACK__imported__module__$5b$externals$5d2f$fs$2f$promises__$5b$external$5d$__$28$fs$2f$promises$2c$__cjs$29$__["default"].unlink(filePath); // DELETE the file
-        return new Response("File deleted successfully", {
-            status: 200
         });
     } catch (error) {
         console.error("File delete error:", error);
