@@ -84,6 +84,7 @@ async function getAllFiles(dir) {
 }
 async function GET(req) {
     try {
+<<<<<<< HEAD
         const filePath = req.nextUrl.searchParams.get("path");
         // ---------------------------------------------
         // CASE 1: Serve the file (image/video)
@@ -117,6 +118,18 @@ async function GET(req) {
         const allFilePaths = await getAllFiles(uploadDir);
         const files = allFilePaths.map((fullPath)=>{
             const name = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].basename(fullPath);
+=======
+        const uploadDir = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(process.cwd(), "public", "uploads");
+        const orderFile = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(uploadDir, "order.json");
+        const filenames = await __TURBOPACK__imported__module__$5b$externals$5d2f$fs$2f$promises__$5b$external$5d$__$28$fs$2f$promises$2c$__cjs$29$__["default"].readdir(uploadDir);
+        // Load saved order (if it exists)
+        let orderMap = {};
+        try {
+            const orderData = await __TURBOPACK__imported__module__$5b$externals$5d2f$fs$2f$promises__$5b$external$5d$__$28$fs$2f$promises$2c$__cjs$29$__["default"].readFile(orderFile, "utf-8");
+            orderMap = JSON.parse(orderData);
+        } catch  {}
+        const files = filenames.filter((name)=>name !== "order.json").map((name)=>{
+>>>>>>> e209d099193ba1097a82e243906e8d963a6c9e1e
             const ext = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].extname(name).toLowerCase();
             const isImage = [
                 ".png",
@@ -137,9 +150,10 @@ async function GET(req) {
                 url: `/api/files?path=${encodeURIComponent(fullPath)}`,
                 imageUrl: isImage ? `/api/files?path=${encodeURIComponent(fullPath)}` : null,
                 isImage,
-                isVideo
+                isVideo,
+                order: orderMap[name] ?? 9999
             };
-        });
+        }).sort((a, b)=>a.order - b.order);
         return Response.json({
             files
         });
