@@ -85,6 +85,25 @@ export default function Home() {
     }
   };
 
+  const deleteUploadedFile = async (filename) => {
+    if (!confirm(`Delete ${filename}?`)) return;
+
+    try {
+      await fetch("/api/files/delete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ filename }),
+      });
+
+      // Update UI immediately
+      setUploadedFiles((prev) =>
+        prev.filter((file) => file.filename !== filename),
+      );
+    } catch (err) {
+      console.error("Failed to delete file:", err);
+    }
+  };
+
   const persistOrder = async (files) => {
     try {
       await fetch("/api/files/reorder", {
@@ -468,6 +487,7 @@ export default function Home() {
                           setDragIndex(null);
                         }}
                         style={{
+                          position: "relative",
                           border:
                             dragIndex === index
                               ? "2px dashed #0066cc"
@@ -479,6 +499,32 @@ export default function Home() {
                           opacity: dragIndex === index ? 0.5 : 1,
                         }}
                       >
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            deleteUploadedFile(fileItem.filename);
+                          }}
+                          style={{
+                            position: "absolute",
+                            top: "6px",
+                            right: "6px",
+                            zIndex: 10,
+                            background: "rgba(0,0,0,0.6)",
+                            color: "white",
+                            border: "none",
+                            borderRadius: "50%",
+                            width: "24px",
+                            height: "24px",
+                            cursor: "pointer",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            fontSize: "14px",
+                          }}
+                          title="Delete file"
+                        >
+                          ✕
+                        </button>
                         <div
                           style={{
                             width: "100%",
