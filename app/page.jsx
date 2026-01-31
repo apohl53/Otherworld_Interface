@@ -9,6 +9,7 @@ export default function Home() {
   const [uploading, setUploading] = useState(false);
   const [uploadedUrl, setUploadedUrl] = useState(null);
   const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [dragIndex, setDragIndex] = useState(null);
   const fileInputRef = useRef(null);
 
   const fetchUploadedFiles = async () => {
@@ -35,22 +36,6 @@ export default function Home() {
       setUploadedFiles([]);
     }
   };
-
-  const handleDelete = async (fullPath) => {
-  if (!confirm("Delete this file?")) return;
-
-  try {
-    await fetch(`/api/files?path=${encodeURIComponent(fullPath)}`, {
-      method: "DELETE",
-    });
-
-    // Refresh list
-    fetchUploadedFiles();
-  } catch (err) {
-    console.error("Delete failed:", err);
-    alert("Could not delete file.");
-  }
-};
 
   useEffect(() => {
     fetchUploadedFiles();
@@ -90,6 +75,7 @@ export default function Home() {
     setIsDragging(false);
   };
 
+  // Delete File
   const clearFile = () => {
     setFile(null);
     setPreview(null);
@@ -97,6 +83,16 @@ export default function Home() {
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
+  };
+
+  // Move Files
+  const reorderFiles = (fromIndex, toIndex) => {
+    setUploadedFiles((prev) => {
+      const updated = [...prev];
+      const [moved] = updated.splice(fromIndex, 1);
+      updated.splice(toIndex, 0, moved);
+      return updated;
+    });
   };
 
   const handleUpload = async () => {
@@ -391,8 +387,8 @@ export default function Home() {
                       {uploading
                         ? "Uploading..."
                         : uploadedUrl
-                        ? "Uploaded ✓"
-                        : "Upload File"}
+                          ? "Uploaded ✓"
+                          : "Upload File"}
                     </button>
                   </div>
                 </div>
@@ -442,17 +438,28 @@ export default function Home() {
                     console.log(
                       "[v0] Rendering file item:",
                       fileItem.fileName,
-                      fileItem
+                      fileItem,
                     );
                     return (
                       <div
                         key={fileItem.filename}
+                        draggable
+                        onDragStart={() => setDragIndex(index)}
+                        onDragOver={(e) => e.preventDefault()}
+                        onDrop={() => {
+                          reorderFiles(dragIndex, index);
+                          setDragIndex(null);
+                        }}
                         style={{
-                          border: "1px solid #e0e0e0",
+                          border:
+                            dragIndex === index
+                              ? "2px dashed #0066cc"
+                              : "1px solid #e0e0e0",
                           borderRadius: "8px",
                           overflow: "hidden",
                           backgroundColor: "#fafafa",
-                           position: "relative",
+                          cursor: "grab",
+                          opacity: dragIndex === index ? 0.5 : 1,
                         }}
                       >
                         <div
