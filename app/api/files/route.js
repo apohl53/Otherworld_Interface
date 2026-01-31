@@ -9,38 +9,42 @@ export async function GET() {
     const uploadDir = path.join(process.cwd(), "public", "uploads");
     const orderFile = path.join(uploadDir, "order.json");
 
-    const filenames = await fs.readdir(uploadDir);
+    // 1️⃣ Read directory
+    const files = await fs.readdir(uploadDir);
 
-    // Load saved order (if it exists)
+    // 2️⃣ Load saved order (if it exists)
     let orderMap = {};
     try {
-      const orderData = await fs.readFile(orderFile, "utf-8");
-      orderMap = JSON.parse(orderData);
-    } catch {}
+      const orderRaw = await fs.readFile(orderFile, "utf-8");
+      orderMap = JSON.parse(orderRaw);
+    } catch {
+      // No order.json yet — totally fine
+    }
 
-    const files = filenames
-      .filter((name) => name !== "order.json")
-      .map((name) => {
-        const ext = path.extname(name).toLowerCase();
+    // 3️⃣ Build file objects
+    const fileObjects = files
+      .filter(
+        (name) =>
+          name !== "order.json" &&
+          !name.startsWith(".") // avoids .DS_Store, etc.
+      )
+      .map((filename) => ({
+        filename,
+        url: `/uploads/${filename}`,
+        order: orderMap[filename] ?? Number.MAX_SAFE_INTEGER,
+        isImage: /\.(png|jpe?g|gif|webp)$/i.test(filename),
+        isVideo: /\.(mp4|mov|webm|avi)$/i.test(filename),
+      }));
 
-        const isImage = [".png", ".jpg", ".jpeg", ".gif", ".webp"].includes(
-          ext,
-        );
-        const isVideo = [".mp4", ".mov", ".avi", ".mkv"].includes(ext);
+    // 4️⃣ Apply persisted order (🔥 critical fix)
+    fileObjects.sort((a, b) => a.order - b.order);
 
-        return {
-          filename: name,
-          url: `/uploads/${name}`,
-          isImage,
-          isVideo,
-          order: orderMap[name] ?? 9999,
-        };
-      })
-      .sort((a, b) => a.order - b.order);
-
-    return Response.json({ files });
+    return Response.json({ files: fileObjects });
   } catch (error) {
-    console.error("File delete error:", error);
-    return new Response("Error deleting file", { status: 500 });
+    console.error("[v0] File list error:", error);
+    return Response.json(
+      { success: false, error: error.message },
+      { status: 500 }
+    );
   }
 }
